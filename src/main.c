@@ -25,6 +25,8 @@
 #include "main.h"
 #include "udp_echoserver.h"
 #include "serial_debug.h"
+#include "lwip/pbuf.h"
+#include "lwip/udp.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -418,20 +420,11 @@ int firstPacketRecieved = 0;
 
 void demo()
 {
-	uint8_t cc[20];
+	uint8_t cc[33] = {0};
 	unsigned char address[5]={110,110,8,110,110};
 	
 	cc[0] = 25;
 	cc[1] = 1;
-	cc[2] = 0;
-	cc[3] = 0;
-	cc[4] = 0;
-	cc[5] = 0;
-	cc[6] = 0;
-	cc[7] = 0;
-	cc[8] = 0;
-	cc[9] = 0;
-	cc[10] = 0;
 	
 				 if(checkFirstoo !=0)
 				 {
@@ -441,7 +434,7 @@ void demo()
 				 }
 				 address[2] = cc[0];
 				 nrf24l01_set_tx_addr(address , 5);
-				 nrf24l01_write_tx_payload(cc + 1 , 10 , true);				 
+				 nrf24l01_write_tx_payload(cc + 1 , 32 , true);				 
 				 
 				  if(checkFirstoo<2)
 						checkFirstoo++;
@@ -523,7 +516,10 @@ void SPI1_Config(void)
 uint16_t data[1000]={0};
 unsigned char str [40];
 uint16_t dat = 11;
-int Channel = 110;
+int tx_channel = 110;
+int rx_channel = 80;
+
+extern void process_incoming_rf(void);
 
 int main(void)
 {
@@ -566,8 +562,8 @@ int main(void)
 	delay_ms(100);
 	beep(40);
 	
-	USART2_Init();
-	USART3_Init();
+	//USART2_Init();
+	//USART3_Init();
 	
 	init_NRF1_IO();
 	init_NRF2_IO();
@@ -576,23 +572,24 @@ int main(void)
 	SPI_Cmd(SPI1, ENABLE);
 	SPI_Cmd(SPI3, ENABLE);
 	
-  nrf24l01_initialize_debug(false, 10, false);	
+  nrf24l01_initialize_debug(false, 32, false);
 	nrf24l01_clear_flush();
 	add[2]=8;
 	nrf24l01_set_tx_addr(add , 5);
 	add[2]=30;
 	nrf24l01_set_rx_addr(add,5,0);
-	nrf24l01_set_rf_ch(Channel);
+	nrf24l01_set_rf_ch(tx_channel);
 
 
-	nrf24l02_initialize_debug(false, 10, false);	
+	nrf24l02_initialize_debug(false, 32, false);	
  	nrf24l02_clear_flush();
 	add[2]=8;
 	nrf24l02_set_tx_addr(add , 5);
 	add[2]=30;
 	nrf24l02_set_rx_addr(add,5,0);	
-	nrf24l02_set_rf_ch(Channel);
-		
+	nrf24l02_set_rf_ch(rx_channel);
+	nrf24l02_set_as_rx(true);		
+	
   /* configure ethernet */ 
   ETH_BSP_Config();
     
@@ -616,10 +613,12 @@ int main(void)
     /* handle periodic timers for LwIP */
     LwIP_Periodic_Handle(LocalTime);
 		
+		process_incoming_rf();
+		
 		if(firstPacketRecieved==0)
 		{
 			demo();
-			setNumber(11);			
+			setNumber(22);			
 		}
 							
   }   

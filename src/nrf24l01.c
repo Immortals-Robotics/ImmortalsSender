@@ -601,7 +601,7 @@ unsigned char nrf24l01_get_rx_pw(unsigned char rxpipenum)
 	unsigned char data;
 	
 	if((rxpipenum > 5))
-		return;
+		return 0;
 		
 	nrf24l01_read_register(nrf24l01_RX_PW_P0 + rxpipenum, &data, 1);
 	
