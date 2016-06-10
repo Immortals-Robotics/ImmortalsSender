@@ -1,0 +1,4 @@
+project/ImmortalsSender
+project/*.uvgui.*
+project/*.uvopt
+project/JLinkLog.txt
