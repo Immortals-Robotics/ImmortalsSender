@@ -26,6 +26,7 @@
 #include "lwip/tcp.h"
 #include <string.h>
 #include <stdio.h>
+#include "config.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -121,14 +122,14 @@ void process_incoming_rf(void)
 {
 	if(nrf24l02_irq_pin_active())
 	{		
-		unsigned char recData[32];
-		nrf24l02_read_rx_payload(recData,32);				
-		struct pbuf* ansBuf = pbuf_alloc(PBUF_TRANSPORT,32, PBUF_POOL);
+		unsigned char recData[RX_PAYLOAD_SIZE];
+		nrf24l02_read_rx_payload(recData,RX_PAYLOAD_SIZE);
+		struct pbuf* ansBuf = pbuf_alloc(PBUF_TRANSPORT, RX_PAYLOAD_SIZE, PBUF_POOL);
 		struct ip_addr boz;
-		IP4_ADDR(&boz, 224, 5 , 23, 3);							 																									   
-		pbuf_take(ansBuf, (unsigned char*)recData, 32);
+		IP4_ADDR(&boz, 224, 5 , 23, 3);
+		pbuf_take(ansBuf, (unsigned char*)recData, RX_PAYLOAD_SIZE);
 		udp_sendto( upcb , ansBuf , &boz , UDP_CLIENT_PORT);
-		pbuf_free(ansBuf);							 								 
+		pbuf_free(ansBuf);
 		 
 		 nrf24l02_irq_clear_rx_dr();
 	}
@@ -145,32 +146,32 @@ void Process_recieved_Packet(unsigned char * data , int len , struct udp_pcb *up
 		 {
 			   if(data[nextPacket + 1] == data[nextPacket + 7] && rx_channel != data[nextPacket+1])
 				 {
-					  nrf24l01_set_rf_ch(data[nextPacket + 1]);
-					  rx_channel = data[nextPacket+1];
+					 rx_channel = data[nextPacket+1];
+					  nrf24l01_set_rf_ch(rx_channel);
 					  beep(100);
-					  nextPacket+=10;
+					  nextPacket+=TX_PAYLOAD_SIZE + 1;
 				 }
 		 }
 		 else if(data[nextPacket] == 81)
 		 {
 			   if(data[nextPacket + 1] == data[nextPacket + 7] && tx_channel != data[nextPacket+1])
 				 {
-					  nrf24l02_set_rf_ch(data[nextPacket + 1]);
-					  tx_channel = data[nextPacket+1];
+					 tx_channel = data[nextPacket+1];
+					  nrf24l02_set_rf_ch(tx_channel);
 					  beep(100);
-					  nextPacket+=10;
+					  nextPacket+=TX_PAYLOAD_SIZE + 1;
 				 }
 		 }
 		 else
 		 {
 				 address[2] = data[nextPacket];
 				 nrf24l01_set_tx_addr(address , 5);
-				 nrf24l01_write_tx_payload(data + nextPacket + 1 , 32 , true);				 
+				 nrf24l01_write_tx_payload(data + nextPacket + 1 , TX_PAYLOAD_SIZE , true);				 
 				 
 				 while(!nrf24l01_irq_pin_active());
 				 nrf24l01_irq_clear_all();
 			 
-				 nextPacket+=33;
+				 nextPacket+=TX_PAYLOAD_SIZE + 1;
 		 }
 	}
 }

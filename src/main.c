@@ -27,6 +27,7 @@
 #include "serial_debug.h"
 #include "lwip/pbuf.h"
 #include "lwip/udp.h"
+#include "config.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -420,7 +421,7 @@ int firstPacketRecieved = 0;
 
 void demo()
 {
-	uint8_t cc[33] = {0};
+	uint8_t cc[TX_PAYLOAD_SIZE+1] = {0};
 	unsigned char address[5]={110,110,8,110,110};
 	
 	cc[0] = 25;
@@ -434,7 +435,7 @@ void demo()
 				 }
 				 address[2] = cc[0];
 				 nrf24l01_set_tx_addr(address , 5);
-				 nrf24l01_write_tx_payload(cc + 1 , 32 , true);				 
+				 nrf24l01_write_tx_payload(cc + 1 , TX_PAYLOAD_SIZE , true);				 
 				 
 				  if(checkFirstoo<2)
 						checkFirstoo++;
@@ -572,7 +573,7 @@ int main(void)
 	SPI_Cmd(SPI1, ENABLE);
 	SPI_Cmd(SPI3, ENABLE);
 	
-  nrf24l01_initialize_debug(false, 32, false);
+  nrf24l01_initialize_debug(false, TX_PAYLOAD_SIZE, false);
 	nrf24l01_clear_flush();
 	add[2]=8;
 	nrf24l01_set_tx_addr(add , 5);
@@ -581,7 +582,7 @@ int main(void)
 	nrf24l01_set_rf_ch(tx_channel);
 
 
-	nrf24l02_initialize_debug(false, 32, false);	
+	nrf24l02_initialize_debug(false, RX_PAYLOAD_SIZE, false);	
  	nrf24l02_clear_flush();
 	add[2]=8;
 	nrf24l02_set_tx_addr(add , 5);
