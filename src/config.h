@@ -1,2 +1,2 @@
-#define RX_PAYLOAD_SIZE 10
-#define TX_PAYLOAD_SIZE 10
+#define RX_PAYLOAD_SIZE 32
+#define TX_PAYLOAD_SIZE 32

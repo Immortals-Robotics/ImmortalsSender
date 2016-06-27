@@ -427,15 +427,16 @@ void demo()
 	cc[0] = 25;
 	cc[1] = 1;
 	
-				 if(checkFirstoo !=0)
-				 {
-						while(!nrf24l01_irq_pin_active());
-						//beep();
-						nrf24l01_irq_clear_all();
-				 }
 				 address[2] = cc[0];
 				 nrf24l01_set_tx_addr(address , 5);
-				 nrf24l01_write_tx_payload(cc + 1 , TX_PAYLOAD_SIZE , true);				 
+				 
+				 nrf24l01_write_tx_payload(cc + 1 , TX_PAYLOAD_SIZE , true);
+				 while(!nrf24l01_irq_pin_active());
+				 nrf24l01_irq_clear_all();
+				 
+				 nrf24l01_write_tx_payload(cc + 1 , 10 , true);
+				 while(!nrf24l01_irq_pin_active());
+				 nrf24l01_irq_clear_all();
 				 
 				  if(checkFirstoo<2)
 						checkFirstoo++;
