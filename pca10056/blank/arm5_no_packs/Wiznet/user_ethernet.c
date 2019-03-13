@@ -10,7 +10,7 @@
 // Default Network Configuration //
 ///////////////////////////////////
 wiz_NetInfo gWIZNETINFO = { .mac = {0x00, 0x08, 0xdc,0x00, 0xab, 0xcd},
-                            .ip = {192, 168, 1, 117}, 
+                            .ip = {192, 168, 1, 126}, 
                             .sn = {255,255,255,0},
                             .gw = {192, 168, 1, 1}, 
                             .dns = {8,8,8,8},
