@@ -190,6 +190,11 @@
 #ifndef SPI_MOSI_PIN
 #define SPI_MOSI_PIN 45   // According to top
 #endif
+#ifndef R_PIN
+#define R_PIN 18   // According to top
+#endif
+
+
 
 // <o> SPI_SS_PIN  - Pin number
  

@@ -7,12 +7,19 @@
 #define LED_OFF         1
 #define LED_YELLOW      LED_3
 #define LED_GREEN       LED_4
+#define LED_RESET       LED_1
 #define BUFFER_SIZE	 256
+#define NOTIFY "my nrf channel is blah blah"
+
+// States
+bool demo = true;
+bool ai = false;
 
 uint8_t tempBuffer[BUFFER_SIZE];
+uint8_t demoBuffer[BUFFER_SIZE];
 
 
-uint32_t esb_init(int state);
+uint32_t esb_init(int state, int robot_id);
 static nrf_esb_payload_t tx_payload;
 static nrf_esb_payload_t rx_payload;
 int counter = 0;
@@ -25,9 +32,9 @@ char buf[10];
 void welcome(){
 	for(int i = 0 ; i < 3; i ++){
 		nrf_gpio_pin_write(LED_YELLOW, LED_ON);
-		nrf_delay_ms(500);
+		nrf_delay_ms(100);
 		nrf_gpio_pin_write(LED_YELLOW, LED_OFF);
-		nrf_delay_ms(500);
+		nrf_delay_ms(100);
 	}
 }
 
@@ -46,7 +53,6 @@ void compile_udp_packet(char* msg){
 
 
 int size(char *ptr){
-    
     int offset = 0;
     int count = 0;
     while (*(ptr + offset) != '\0'){
@@ -79,12 +85,14 @@ void nrf_esb_event_handler(nrf_esb_evt_t const * p_event){
     }
 }
 
-
-uint32_t esb_init(int state){
+uint32_t esb_init(int state, int robot_id){
     uint32_t err_code;
-    uint8_t base_addr_0[4] = {0xE7, 0xE7, 0xE7, 0xE7};
+		uint8_t base_addr_0[4] = {110, 25, 110, 110};
+    if(robot_id != -1){
+				base_addr_0[1] = robot_id;
+		}
     uint8_t base_addr_1[4] = {0xC2, 0xC2, 0xC2, 0xC2};
-    uint8_t addr_prefix[8] = {0xE7, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8 };
+    uint8_t addr_prefix[8] = {110, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8 };
 		nrf_esb_config_t nrf_esb_config         = NRF_ESB_DEFAULT_CONFIG;
     nrf_esb_config.payload_length           = 30;
     nrf_esb_config.bitrate                  = NRF_ESB_BITRATE_2MBPS;
@@ -114,7 +122,7 @@ uint32_t esb_init(int state){
     err_code = nrf_esb_set_prefixes(addr_prefix, 8);
     VERIFY_SUCCESS(err_code);
 
-		nrf_esb_set_rf_channel(1);
+		nrf_esb_set_rf_channel(10);
 
     return NRF_SUCCESS;
 }

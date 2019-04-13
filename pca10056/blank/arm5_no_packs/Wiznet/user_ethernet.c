@@ -11,7 +11,7 @@
 ///////////////////////////////////
 wiz_NetInfo gWIZNETINFO = { .mac = {0x00, 0x08, 0xdc,0x00, 0xab, 0xcd},
                             .ip = {192, 168, 1, 126}, 
-                            .sn = {255,255,255,0},
+                            .sn = {255,255,255,0},  // Mask 
                             .gw = {192, 168, 1, 1}, 
                             .dns = {8,8,8,8},
                             .dhcp = NETINFO_DHCP };
@@ -53,7 +53,6 @@ void user_ethernet_init(){
 			SEGGER_RTT_WriteString(0, "WIZCHIP Initialized fail.\r\n");
       while(1);
     }
-		
 
     timeout_info.retry_cnt = 1;
     timeout_info.time_100us = 0x3E8;	// timeout value = 10ms
@@ -69,5 +68,6 @@ void network_init(){
 	ctlnetwork(CN_SET_NETINFO, (void*)&gWIZNETINFO);
 	ctlnetwork(CN_GET_NETINFO, (void*)&gWIZNETINFO);
 
+	// Display Network Information
 	ctlwizchip(CW_GET_ID,(void*)tmpstr);
 }

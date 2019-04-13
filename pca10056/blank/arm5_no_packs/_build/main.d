@@ -62,6 +62,7 @@
 .\_build\main.o: ..\..\..\components\libraries\log\nrf_log_default_backends.h
 .\_build\main.o: .\Utils\mylog.h
 .\_build\main.o: .\Utils\myNRF.h
+.\_build\main.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
 .\_build\main.o: .\Wiznet\user_spi.h
 .\_build\main.o: .\Wiznet\user_ethernet.h
 .\_build\main.o: ..\..\..\components\libraries\bsp\bsp.h

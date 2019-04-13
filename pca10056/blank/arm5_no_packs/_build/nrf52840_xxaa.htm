@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\_build\nrf52840_xxaa.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\_build\nrf52840_xxaa.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Sat Mar 09 16:01:31 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Sat Apr 13 15:03:34 2019
 <BR><P>
-<H3>Maximum Stack Usage =        336 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        352 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; transmit &rArr; SEGGER_RTT_printf &rArr; SEGGER_RTT_vprintf &rArr; _PrintInt &rArr; _PrintUnsigned &rArr; _StoreChar &rArr; SEGGER_RTT_Write &rArr; SEGGER_RTT_WriteNoLock &rArr; _WriteBlocking
 <P>
@@ -329,11 +329,11 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_write_payload
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_set_prefixes
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_read_rx_payload
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_WriteNoCheck
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_WriteBlocking
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_tx_transaction
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_fifo_push_rfbuf
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;on_radio_disabled_rx
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_WriteNoCheck
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_WriteBlocking
 </UL>
 
 <P><STRONG><a name="[84]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
@@ -407,8 +407,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_util_critical_region_exit
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_util_critical_region_enter
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DoInit
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_WriteNoLock
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DoInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_WriteString
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_vprintf
@@ -431,7 +431,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_Write
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
+<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_event_handler
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -441,7 +441,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_vprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_event_handler
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -478,7 +478,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;socket
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendto
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSn_RX_RSR
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSn_TxBASE
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSn_RxBASE
@@ -511,7 +511,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;socket
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendto
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wizchip_sw_reset
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wizchip_settimeout
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wizchip_setnetmode
@@ -610,7 +610,7 @@ Global Symbols
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_READ
 </UL>
 <BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;socket
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
 </UL>
 
 <P><STRONG><a name="[75]"></a>ctlnetwork</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, wizchip_conf.o(i.ctlnetwork))
@@ -636,12 +636,12 @@ Global Symbols
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wizchip_getinterrupt
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wizchip_clrinterrupt
 </UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
+<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;network_init
 </UL>
 
-<P><STRONG><a name="[83]"></a>esb_init</STRONG> (Thumb, 150 bytes, Stack size 48 bytes, main.o(i.esb_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = esb_init &rArr; nrf_esb_init &rArr; nrf_esb_disable
+<P><STRONG><a name="[83]"></a>esb_init</STRONG> (Thumb, 158 bytes, Stack size 48 bytes, main.o(i.esb_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = esb_init &rArr; nrf_esb_init &rArr; update_radio_parameters
 </UL>
 <BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_set_rf_channel
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_set_prefixes
@@ -650,7 +650,7 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_init
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -659,7 +659,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_READ
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -697,23 +697,26 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[35]"></a>main</STRONG> (Thumb, 232 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 336<LI>Call Chain = main &rArr; transmit &rArr; SEGGER_RTT_printf &rArr; SEGGER_RTT_vprintf &rArr; _PrintInt &rArr; _PrintUnsigned &rArr; _StoreChar &rArr; SEGGER_RTT_Write &rArr; SEGGER_RTT_WriteNoLock &rArr; _WriteBlocking
+<P><STRONG><a name="[35]"></a>main</STRONG> (Thumb, 312 bytes, Stack size 8 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 352<LI>Call Chain = main &rArr; transmit &rArr; SEGGER_RTT_printf &rArr; SEGGER_RTT_vprintf &rArr; _PrintInt &rArr; _PrintUnsigned &rArr; _StoreChar &rArr; SEGGER_RTT_Write &rArr; SEGGER_RTT_WriteNoLock &rArr; _WriteBlocking
 </UL>
-<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi0_master_init
+<BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wizchip_select
+<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wizchip_deselect
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi0_master_init
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;socket
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sendto
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSn_RX_RSR
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_printf
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_WriteString
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;size
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;size
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_init
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esb_init
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clocks_start
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_delay_ms
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
@@ -724,7 +727,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ctlwizchip
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ctlnetwork
 </UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
+<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
 </UL>
 
 <P><STRONG><a name="[9c]"></a>nrf_esb_disable</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, nrf_esb.o(i.nrf_esb_disable))
@@ -760,13 +763,13 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[85]"></a>nrf_esb_init</STRONG> (Thumb, 282 bytes, Stack size 16 bytes, nrf_esb.o(i.nrf_esb_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = nrf_esb_init &rArr; nrf_esb_disable
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = nrf_esb_init &rArr; update_radio_parameters
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_disable
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_radio_parameters
+<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_radio_parameters
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset_fifos
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPriority
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EnableIRQ
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_disable
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
@@ -828,11 +831,11 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EnableIRQ
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_ClearPendingIRQ
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
 </UL>
 
 <P><STRONG><a name="[b8]"></a>nrf_esb_stop_rx</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, nrf_esb.o(i.nrf_esb_stop_rx))
-<BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
+<BR><BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
 </UL>
 
 <P><STRONG><a name="[a7]"></a>nrf_esb_write_payload</STRONG> (Thumb, 160 bytes, Stack size 24 bytes, nrf_esb.o(i.nrf_esb_write_payload))
@@ -843,10 +846,10 @@ Global Symbols
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_DisableIRQ
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
 </UL>
 
-<P><STRONG><a name="[97]"></a>recvfrom</STRONG> (Thumb, 532 bytes, Stack size 64 bytes, socket.o(i.recvfrom))
+<P><STRONG><a name="[98]"></a>recvfrom</STRONG> (Thumb, 532 bytes, Stack size 64 bytes, socket.o(i.recvfrom))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = recvfrom &rArr; wiz_recv_data &rArr; getSn_RxBASE &rArr; WIZCHIP_READ
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSn_RX_RSR
@@ -860,13 +863,13 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[bd]"></a>reg_wizchip_cs_cbfunc</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, wizchip_conf.o(i.reg_wizchip_cs_cbfunc))
-<BR><BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
+<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
 </UL>
 
 <P><STRONG><a name="[be]"></a>reg_wizchip_spi_cbfunc</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, wizchip_conf.o(i.reg_wizchip_spi_cbfunc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = reg_wizchip_spi_cbfunc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
+<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
 </UL>
 
 <P><STRONG><a name="[95]"></a>sendto</STRONG> (Thumb, 430 bytes, Stack size 40 bytes, socket.o(i.sendto))
@@ -882,8 +885,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[98]"></a>size</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, main.o(i.size))
-<BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
+<P><STRONG><a name="[99]"></a>size</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, main.o(i.size))
+<BR><BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -898,7 +901,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[92]"></a>spi0_master_init</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, user_spi.o(i.spi0_master_init))
+<P><STRONG><a name="[91]"></a>spi0_master_init</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, user_spi.o(i.spi0_master_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = spi0_master_init &rArr; spi_master_init &rArr; nrf_gpio_cfg_output &rArr; nrf_gpio_cfg
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_master_init
@@ -909,11 +912,11 @@ Global Symbols
 <P><STRONG><a name="[b7]"></a>spi_master_init</STRONG> (Thumb, 156 bytes, Stack size 32 bytes, user_spi.o(i.spi_master_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = spi_master_init &rArr; nrf_gpio_cfg_output &rArr; nrf_gpio_cfg
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_pin_set
+<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_cfg
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_pin_set
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_cfg_output
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_cfg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi0_master_init
+<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi0_master_init
 </UL>
 
 <P><STRONG><a name="[c0]"></a>spi_master_rx</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, user_spi.o(i.spi_master_rx))
@@ -928,21 +931,21 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wizchip_write
 </UL>
 
-<P><STRONG><a name="[99]"></a>transmit</STRONG> (Thumb, 124 bytes, Stack size 24 bytes, main.o(i.transmit))
-<BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = transmit &rArr; SEGGER_RTT_printf &rArr; SEGGER_RTT_vprintf &rArr; _PrintInt &rArr; _PrintUnsigned &rArr; _StoreChar &rArr; SEGGER_RTT_Write &rArr; SEGGER_RTT_WriteNoLock &rArr; _WriteBlocking
+<P><STRONG><a name="[97]"></a>transmit</STRONG> (Thumb, 288 bytes, Stack size 40 bytes, main.o(i.transmit))
+<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = transmit &rArr; SEGGER_RTT_printf &rArr; SEGGER_RTT_vprintf &rArr; _PrintInt &rArr; _PrintUnsigned &rArr; _StoreChar &rArr; SEGGER_RTT_Write &rArr; SEGGER_RTT_WriteNoLock &rArr; _WriteBlocking
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_write_payload
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_stop_rx
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_start_rx
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_printf
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;size
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;size
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esb_init
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_coredep_delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[93]"></a>user_ethernet_init</STRONG> (Thumb, 86 bytes, Stack size 24 bytes, user_ethernet.o(i.user_ethernet_init))
+<P><STRONG><a name="[92]"></a>user_ethernet_init</STRONG> (Thumb, 86 bytes, Stack size 24 bytes, user_ethernet.o(i.user_ethernet_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = user_ethernet_init &rArr; network_init &rArr; ctlwizchip &rArr; wizchip_init &rArr; wizchip_sw_reset &rArr; WIZCHIP_WRITE_BUF
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_WriteString
@@ -955,8 +958,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[91]"></a>welcome</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, main.o(i.welcome))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = welcome &rArr; nrf_gpio_pin_write
+<P><STRONG><a name="[93]"></a>welcome</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, main.o(i.welcome))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = welcome &rArr; nrf_gpio_pin_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_pin_write
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_delay_ms
@@ -972,7 +975,7 @@ Global Symbols
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_READ_BUF
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_READ
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
 </UL>
 
 <P><STRONG><a name="[b2]"></a>wiz_recv_ignore</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, w5100.o(i.wiz_recv_ignore))
@@ -981,7 +984,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_WRITE
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_READ
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recvfrom
 </UL>
 
 <P><STRONG><a name="[b5]"></a>wiz_send_data</STRONG> (Thumb, 208 bytes, Stack size 56 bytes, w5100.o(i.wiz_send_data))
@@ -1027,6 +1030,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = wizchip_deselect
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_pin_port_decode
+</UL>
+<BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_ethernet.o(i.user_ethernet_init)
 </UL>
@@ -1092,6 +1097,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_pin_port_decode
 </UL>
+<BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
 <BR>[Address Reference Count : 1]<UL><LI> user_ethernet.o(i.user_ethernet_init)
 </UL>
 <P><STRONG><a name="[81]"></a>wizchip_setinterruptmask</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, wizchip_conf.o(i.wizchip_setinterruptmask))
@@ -1124,7 +1131,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIZCHIP_WRITE
 </UL>
-<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
+<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;user_ethernet_init
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ctlnetwork
 </UL>
 
@@ -1161,7 +1168,8 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrfx_coredep_delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome
+<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome
+<LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_init
 </UL>
 
@@ -1184,11 +1192,11 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_pin_port_decode
 </UL>
-<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome
+<BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;welcome
 </UL>
 
 <P><STRONG><a name="[9b]"></a>nrfx_coredep_delay_us</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, main.o(i.nrfx_coredep_delay_us))
-<BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
+<BR><BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_delay_ms
 </UL>
 
@@ -1233,9 +1241,9 @@ Local Symbols
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_read_rx_payload
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_init
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_flush_tx
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_tx_transaction
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_skip_tx
 <LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SWI0_EGU0_IRQHandler
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_tx_transaction
 </UL>
 
 <P><STRONG><a name="[b1]"></a>NVIC_SetPendingIRQ</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, nrf_esb.o(i.NVIC_SetPendingIRQ))
@@ -1287,19 +1295,19 @@ Local Symbols
 <P><STRONG><a name="[42]"></a>on_radio_disabled_tx_noack</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, nrf_esb.o(i.on_radio_disabled_tx_noack))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = on_radio_disabled_tx_noack &rArr; start_tx_transaction
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_skip_tx
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_tx_transaction
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_tx_transaction
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPendingIRQ
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_skip_tx
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nrf_esb.o(i.start_tx_transaction)
 </UL>
 <P><STRONG><a name="[3c]"></a>on_radio_disabled_tx_wait_for_ack</STRONG> (Thumb, 268 bytes, Stack size 32 bytes, nrf_esb.o(i.on_radio_disabled_tx_wait_for_ack))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = on_radio_disabled_tx_wait_for_ack &rArr; start_tx_transaction
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_skip_tx
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_tx_transaction
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_tx_transaction
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rx_fifo_push_rfbuf
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPendingIRQ
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_esb_skip_tx
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> nrf_esb.o(i.on_radio_disabled_tx)
 </UL>
@@ -1442,8 +1450,8 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[ab]"></a>nrf_gpio_pin_port_decode</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, user_spi.o(i.nrf_gpio_pin_port_decode))
-<BR><BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_pin_set
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_cfg
+<BR><BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_cfg
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nrf_gpio_pin_set
 </UL>
 
 <P><STRONG><a name="[ad]"></a>nrf_gpio_pin_set</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, user_spi.o(i.nrf_gpio_pin_set))
