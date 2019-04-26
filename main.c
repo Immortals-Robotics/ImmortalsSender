@@ -21,6 +21,7 @@
 #include "myNRF.h"
 #include <time.h>
 
+//#define DEBUG
 
 ///////////////////// Ethernet /////////////////////////
 #include "user_spi.h"
@@ -30,36 +31,41 @@
 #define SOCK_TCPC 0
 
 
+
+
+
 time_t raw_time;
 uint8_t UDP_packet[BUFFER_SIZE];
-uint8_t targetIP[4] = {192, 168, 1, 255};   // Test !!!  // Forth byte must be compliment of Mask addr (Mask -> 255.255.255.0  Ip -> (192.168.1)(not important).255(0(mask)+255(ip) ))
+uint8_t targetIP[4] = {192, 168, 1, 255};   // It's OK !!!  // Forth byte must be compliment of Mask addr (Mask -> 255.255.255.0  Ip -> (192.168.1)(not important).255(0(mask)+255(ip) ))
 uint8_t sourceIP[4] = {0, 0, 0, 0};  
 uint16_t senderPort = 30008;
 uint16_t targetPort = 30010;
 uint16_t *curPort;
-////////////////////////////////////////////////////////
+
 
 int c = 0;
-void transmit(char* msg, bool log, bool demo){
-	if (log){
+void transmit(char* msg, bool demo){
+	#ifdef DEBUG
 		for(int i = 0; i < size(msg); i++){
 			SEGGER_RTT_printf(0, "Bytes: %x\r\n", msg[i]);
 		}
 	}
-	////////////////////////////////////////////////////////////////
+	#endif
+
+	// Preproccessing
+	int len = (int)msg[1]; // Packet Length
+	int id = (int)msg[0]; // RobotID
+	
+	
 	if (demo){
 		nrf_esb_stop_rx();
 		nrf_delay_us(2000);
 		esb_init(TX_MODE, -1);
-		tx_payload.length = 3;
+		tx_payload.length = 1;
 		tx_payload.noack = true;
 		nrf_delay_us(2000);
-		
 		while(1){
-		
 			tx_payload.data[0] = (char)msg[0];
-			tx_payload.data[1] = (char)msg[1];
-			tx_payload.data[2] = (char)msg[2];
 			tx_payload.data[8] = c;
 			if(nrf_esb_write_payload(&tx_payload) == NRF_SUCCESS){
 				c ++;
@@ -67,51 +73,39 @@ void transmit(char* msg, bool log, bool demo){
 			}
 		}
 		nrf_delay_us(2000);
-		esb_init(RX_MODE, -1);
+		esb_init(RX_MODE, 30);
 		nrf_delay_us(2000);	
 		nrf_esb_start_rx();	
 	}
-	////////////////////////////////////////////////////////////////
+	// Normal packet transmission
 	else{
-		int len = (int)msg[1];
-		int id = (int)msg[0];
 		nrf_esb_stop_rx();
 		nrf_delay_us(2000);
 		esb_init(TX_MODE, id);
 		tx_payload.length = 32;
 		tx_payload.noack = true;
 		nrf_delay_us(2000);
+		
+		#ifdef DEBUG
 		for(int i = 0 ; i < len; i++){
 			tx_payload.data[i] = (char)msg[i];
 			SEGGER_RTT_printf(0, "Bytes: %x\r\n", msg[i]);
 		}
-		
-		tx_payload.data[20] = c;
-		
-		
 		SEGGER_RTT_printf(0, "Length: %d\r\n", (int)msg[0]);
+		#endif
+		
 		while(1){
 			for(int i = 0 ; i < len; i++){
 				tx_payload.data[i] = (char)msg[i];
 			}
 			tx_payload.data[20] = c;
-//			
-//			tx_payload.data[0] = (char)msg[0];
-//			tx_payload.data[1] = (char)msg[1];
-//			tx_payload.data[2] = (char)msg[2];
-//			tx_payload.data[3] = (char)msg[3];
-//			tx_payload.data[4] = (char)msg[4];
-//			tx_payload.data[5] = (char)msg[5];
-//			tx_payload.data[6] = (char)msg[6];
-//			tx_payload.data[7] = (char)msg[7];
-//			tx_payload.data[8] = c;
 			if(nrf_esb_write_payload(&tx_payload) == NRF_SUCCESS){
 				c ++;
 				break;
 			}
 		}
 		nrf_delay_us(2000);
-		esb_init(RX_MODE, -1);
+		esb_init(RX_MODE, 30);   // RX address for all robots
 		nrf_delay_us(2000);	
 		nrf_esb_start_rx();	
 	}
@@ -148,48 +142,51 @@ int main(void){
 				SEGGER_RTT_WriteString(0, "%d:Socket Open Fail\r\n"); 
 		}
 		
-		for(int k = 0 ; k < 2 ; k ++){
-			ret = sendto(SOCK_TCPC, (void *)"Connected\r\n", 11, targetIP, targetPort);
-		}
+		ret = sendto(SOCK_TCPC, (void *)"Connected\r\n", 11, targetIP, targetPort);
 		
     uint32_t err_code;
     err_code = logging_init();
     
     clocks_start();
-		esb_init(RX_MODE, -1);
+		esb_init(RX_MODE, 30);  // Mode, Address
 		
-		// Notify 
+		// Notify (Demo mode)
 		//////////////////////////////////////////
 		sprintf(demoBuffer, NOTIFY);
 		//////////////////////////////////////////
 		int timer = 0;
 		int new_packet = 0;
+		
+		
     while (true){
 			new_packet = getSn_RX_RSR(0);  // Ethernet Listener
 
 			if(new_packet == 0 && timer == 0){
-					//SEGGER_RTT_printf(0, "Demo\r\n");
 					for(int i = 0 ; i < 100; i++){
-						transmit(demoBuffer, false, true);
+						transmit(demoBuffer, true);
 					}
 			}
 			if (timer != 0 && new_packet == 0){
 					timer --;
 			}
 			if(new_packet != 0){
-				SEGGER_RTT_printf(0, "********AI*********\r\n");
+				#ifdef DEBUG
+					SEGGER_RTT_printf(0, "********AI*********\r\n");
+				#endif
 				new_packet = 0;
 				timer = 100000;
 				int ret = recvfrom(SOCK_TCPC, UDP_packet, BUFFER_SIZE, sourceIP, curPort);
-//				SEGGER_RTT_printf(0, "Packet: %d %x\r\n", ret, UDP_packet);
-//				SEGGER_RTT_printf(0, "IP: %d %hu\r\n", size(sourceIP), sourceIP);
-				transmit(UDP_packet, false, false);
-				SEGGER_RTT_printf(0, "********AI*********\r\n");
+				transmit(UDP_packet, false);
+				#ifdef DEBUG
+					SEGGER_RTT_printf(0, "********AI*********\r\n");
+				#endif
 			}
 			if(received){
 				received = false;
 				sprintf(tempBuffer, "%s\r\n", rx_payload.data);
-				SEGGER_RTT_printf(0, "%s\r\n", tempBuffer);
+				#ifdef DEBUG
+					SEGGER_RTT_printf(0, "%s\r\n", tempBuffer);
+				#endif
 				sendto(SOCK_TCPC, (tempBuffer), size(tempBuffer), targetIP, targetPort);
 			}
     }

@@ -22,7 +22,7 @@ Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
 D:\Immortals Robotic team\Programming\Immortals_sender\pca10056\blank\arm5_no_packs\esb_low_power_ptx_pca10056.uvprojx
-Project File Date:  04/13/2019
+Project File Date:  04/26/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'd:\Keil_v5\ARM\ARMCC\Bin'
@@ -45,24 +45,24 @@ compiling app_util_platform.c...
 compiling nrf_assert.c...
 "no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\components\libraries\util\nrf_assert.c": No such file or directory
 ..\..\..\..\..\..\components\libraries\util\nrf_assert.c: 0 warnings, 1 error
-compiling nrf_balloc.c...
-"no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\components\libraries\balloc\nrf_balloc.c": No such file or directory
-..\..\..\..\..\..\components\libraries\balloc\nrf_balloc.c: 0 warnings, 1 error
 compiling nrf_atomic.c...
 "no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\components\libraries\atomic\nrf_atomic.c": No such file or directory
 ..\..\..\..\..\..\components\libraries\atomic\nrf_atomic.c: 0 warnings, 1 error
+compiling nrf_balloc.c...
+"no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\components\libraries\balloc\nrf_balloc.c": No such file or directory
+..\..\..\..\..\..\components\libraries\balloc\nrf_balloc.c: 0 warnings, 1 error
 compiling nrf_fprintf.c...
 "no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\external\fprintf\nrf_fprintf.c": No such file or directory
 ..\..\..\..\..\..\external\fprintf\nrf_fprintf.c: 0 warnings, 1 error
 compiling nrf_fprintf_format.c...
 "no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\external\fprintf\nrf_fprintf_format.c": No such file or directory
 ..\..\..\..\..\..\external\fprintf\nrf_fprintf_format.c: 0 warnings, 1 error
-compiling nrf_ringbuf.c...
-"no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\components\libraries\ringbuf\nrf_ringbuf.c": No such file or directory
-..\..\..\..\..\..\components\libraries\ringbuf\nrf_ringbuf.c: 0 warnings, 1 error
 compiling nrf_memobj.c...
 "no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\components\libraries\memobj\nrf_memobj.c": No such file or directory
 ..\..\..\..\..\..\components\libraries\memobj\nrf_memobj.c: 0 warnings, 1 error
+compiling nrf_ringbuf.c...
+"no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\components\libraries\ringbuf\nrf_ringbuf.c": No such file or directory
+..\..\..\..\..\..\components\libraries\ringbuf\nrf_ringbuf.c: 0 warnings, 1 error
 compiling nrf_strerror.c...
 "no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\components\libraries\strerror\nrf_strerror.c": No such file or directory
 ..\..\..\..\..\..\components\libraries\strerror\nrf_strerror.c: 0 warnings, 1 error
@@ -93,32 +93,18 @@ compiling nrf_log_frontend.c...
 compiling nrf_log_str_formatter.c...
 "no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\components\libraries\log\src\nrf_log_str_formatter.c": No such file or directory
 ..\..\..\..\..\..\components\libraries\log\src\nrf_log_str_formatter.c: 0 warnings, 1 error
-compiling SEGGER_RTT_Syscalls_KEIL.c...
-"no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT_Syscalls_KEIL.c": No such file or directory
-..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT_Syscalls_KEIL.c: 0 warnings, 1 error
 compiling SEGGER_RTT.c...
 "no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT.c": No such file or directory
 ..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT.c: 0 warnings, 1 error
+compiling SEGGER_RTT_Syscalls_KEIL.c...
+"no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT_Syscalls_KEIL.c": No such file or directory
+..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT_Syscalls_KEIL.c: 0 warnings, 1 error
 compiling SEGGER_RTT_printf.c...
 "no source": Error:  #5: cannot open source input file "..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT_printf.c": No such file or directory
 ..\..\..\..\..\..\external\segger_rtt\SEGGER_RTT_printf.c: 0 warnings, 1 error
 compiling main.c...
 .\Utils\mylog.h(13): warning:  #1-D: last line of file ends without a newline
   #endif
-.\Utils\myNRF.h(44): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
-  	sprintf(tempBuffer, "%d\r\n", sizeof(msg));
-.\Utils\myNRF.h(45): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
-  	SEGGER_RTT_WriteString(0, tempBuffer);
-.\Utils\myNRF.h(46): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
-  	sprintf(tempBuffer, "%s\r\n", msg);
-.\Utils\myNRF.h(49): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
-  		sprintf(tempBuffer, "%s\r\n", msg[i]);
-.\Utils\myNRF.h(49): warning:  #181-D: argument is incompatible with corresponding format string conversion
-  		sprintf(tempBuffer, "%s\r\n", msg[i]);
-.\Utils\myNRF.h(50): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
-  		SEGGER_RTT_WriteString(0, tempBuffer);
-.\Utils\myNRF.h(70): warning:  #223-D: function "MYLOG" declared implicitly
-  						SEGGER_RTT_printf(0, (const char*)MYLOG("TX Payload", "Success."));
 .\Utils\myNRF.h(156): warning:  #1-D: last line of file ends without a newline
   }
 .\Wiznet\user_ethernet.h(7): warning:  #1295-D: Deprecated declaration wizchip_select - give arg types
@@ -131,31 +117,29 @@ compiling main.c...
   void user_ethernet_init	();
 .\Wiznet\user_ethernet.h(14): warning:  #1295-D: Deprecated declaration network_init - give arg types
   void network_init		();
-..\..\..\main.c(163): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\..\..\main.c(155): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
   		sprintf(demoBuffer, 
 OTIFY);
-..\..\..\main.c(173): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *"
+..\..\..\main.c(166): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *"
   						transmit(demoBuffer, 
-alse, 
 rue);
-..\..\..\main.c(186): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *"
+..\..\..\main.c(179): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *"
   				transmit(UDP_packet, 
-alse, 
 alse);
-..\..\..\main.c(191): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\..\..\main.c(186): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
   				sprintf(tempBuffer, "%s\r\n", rx_payload.data);
-..\..\..\main.c(193): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *"
+..\..\..\main.c(190): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *"
   				sendto(
 OCK_TCPC, (tempBuffer), size(tempBuffer), targetIP, targetPort);
-..\..\..\main.c(196): warning:  #1-D: last line of file ends without a newline
+..\..\..\main.c(193): warning:  #1-D: last line of file ends without a newline
   }
-..\..\..\main.c(155): warning:  #550-D: variable "err_code"  was set but never used
+..\..\..\main.c(147): warning:  #550-D: variable "err_code"  was set but never used
       uint32_t err_code;
 ..\..\..\main.c: 21 warnings, 0 errors
 linking...
-Program Size: Code=11936 RO-data=624 RW-data=220 ZI-data=10764  
+Program Size: Code=11776 RO-data=624 RW-data=220 ZI-data=10764  
 FromELF: creating hex file...
-".\_build\nrf52840_xxaa.axf" - 0 Error(s), 21 Warning(s).
+".\_build\nrf52840_xxaa.axf" - 0 Error(s), 14 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -179,8 +163,8 @@ Package Vendor: NordicSemiconductor
 <h2>Collection of Component Files used:</h2>
 
    * Component: NordicSemiconductor::Device:Startup:8.17.0
-      Source file:   Device\Source\arm\arm_startup_nrf52840.s
       Source file:   Device\Source\system_nrf52840.c
+      Source file:   Device\Source\arm\arm_startup_nrf52840.s
       Include file:  Device\Include\system_nrf52840.h
 
    * Component: ARM::CMSIS:CORE:4.3.0
