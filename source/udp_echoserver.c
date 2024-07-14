@@ -4,14 +4,6 @@
 #define UDP_SERVER_PORT    60005   /* define the UDP local connection port */
 #define UDP_CLIENT_PORT    60006   /* define the UDP remote connection port */
 
-uint16_t pp;
-unsigned char *cc;
-char rr;
-int toggle=0;
-int i;
-int rrr;
-
-extern void setNumber(int);
 extern int fps;
 
 int checkFirst = 0;
@@ -21,15 +13,16 @@ extern int Channel;
 extern int firstPacketRecieved;
 
 int packetLen=0;
-char tmp[100];
 
 void Process_recieved_Packet(char * data , int len , struct udp_pcb *upcb)
 {
+    fps++;
+	firstPacketRecieved=1;
+
 	int nextPacket=0;
 	unsigned char address[5]={110,110,8,110,110};
 	unsigned char recData[10];
 	int timeOut = 40;
-  memcpy(tmp,data,len);
 
 	while(nextPacket < len)
 	{
@@ -91,25 +84,4 @@ void Process_recieved_Packet(char * data , int len , struct udp_pcb *upcb)
 				 nextPacket+=packetLen+2;
 		 }
 	}
-}
-
-/**
-  * @brief This function is called when an UDP datagrm has been received on the port UDP_PORT.
-  * @param arg user supplied argument (udp_pcb.recv_arg)
-  * @param pcb the udp_pcb which received data
-  * @param p the packet buffer that was received
-  * @param addr the remote IP address from which the packet was received
-  * @param port the remote port from which the packet was received
-  * @retval None
-  */
-void udp_echoserver_receive_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, struct ip_addr *addr, u16_t port)
-{
-	unsigned char * cc = p->payload;
-	int len = p->len;
-
-	fps++;
-	firstPacketRecieved=1;
-	Process_recieved_Packet(cc,len,upcb);
-	pbuf_free(p);
-	return;
 }

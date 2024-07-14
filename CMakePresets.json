@@ -22,48 +22,21 @@
         "type": "equals",
         "lhs": "${hostSystemName}",
         "rhs": "Linux"
-      }
-    },
-    {
-      "name": "rpi-base",
-      "inherits": "linux-base",
-      "hidden": true,
+      },
       "cacheVariables": {
         "USE_MOCK_RF24": "OFF"
       }
     },
     {
-      "name": "rpi-debug",
-      "inherits": "rpi-base",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
-      }
-    },
-    {
-      "name": "rpi-release",
-      "inherits": "rpi-base",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
-      }
-    },
-    {
-      "name": "ubuntu-base",
+      "name": "linux-debug",
       "inherits": "linux-base",
-      "hidden": true,
-      "cacheVariables": {
-        "USE_MOCK_RF24": "ON"
-      }
-    },
-    {
-      "name": "ubuntu-debug",
-      "inherits": "ubuntu-base",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug"
       }
     },
     {
-      "name": "ubuntu-release",
-      "inherits": "ubuntu-base",
+      "name": "linux-release",
+      "inherits": "linux-base",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "RelWithDebInfo"
       }
@@ -156,20 +129,12 @@
   ],
   "buildPresets": [
     {
-      "name": "rpi-debug",
-      "configurePreset": "rpi-debug"
+      "name": "linux-debug",
+      "configurePreset": "linux-debug"
     },
     {
-      "name": "rpi-release",
-      "configurePreset": "rpi-release"
-    },
-    {
-      "name": "ubuntu-debug",
-      "configurePreset": "ubuntu-debug"
-    },
-    {
-      "name": "ubuntu-release",
-      "configurePreset": "ubuntu-release"
+      "name": "linux-release",
+      "configurePreset": "linux-release"
     },
     {
       "name": "macos-debug",
@@ -190,20 +155,12 @@
   ],
   "packagePresets": [
     {
-      "name": "rpi-debug",
-      "configurePreset": "rpi-debug"
+      "name": "linux-debug",
+      "configurePreset": "linux-debug"
     },
     {
-      "name": "rpi-release",
-      "configurePreset": "rpi-release"
-    },
-    {
-      "name": "ubuntu-debug",
-      "configurePreset": "ubuntu-debug"
-    },
-    {
-      "name": "ubuntu-release",
-      "configurePreset": "ubuntu-release"
+      "name": "linux-release",
+      "configurePreset": "linux-release"
     },
     {
       "name": "macos-debug",
