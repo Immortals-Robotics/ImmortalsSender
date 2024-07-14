@@ -24,7 +24,12 @@ void demo()
 
     address[2] = data[0];
     radio.openWritingPipe(address);
-    radio.write(data + 1, 10);
+
+    const bool result = radio.write(data + 1, 10);
+    if (!result)
+    {
+        Common::logError("Failed to send demo bytes");
+    }
 }
 
 void processRecievedPacket(std::span<char> packet)
@@ -49,8 +54,12 @@ void processRecievedPacket(std::span<char> packet)
             address[2] = packet[head];
             radio.openWritingPipe(address);
 
-            const int packet_len = packet[head + 1];
-            radio.write(packet.data() + head + 2, packet_len);
+            const int  packet_len = packet[head + 1];
+            const bool result     = radio.write(packet.data() + head + 2, packet_len);
+            if (!result)
+            {
+                Common::logError("Failed to send {} bytes to {}", packet_len, address[2]);
+            }
 
             head += packet_len + 2;
         }
@@ -59,10 +68,25 @@ void processRecievedPacket(std::span<char> packet)
 
 int main(void)
 {
-    // initialize nrf
-    if (!radio.begin())
+    Common::Services::Params params{std::filesystem::path{DATA_DIR} / "config.toml"};
+    Common::Services::initialize(params);
+
+    Common::logInfo("Initializing nrf24");
+
+    bool nrf_init_result;
+    try
     {
-        Common::logCritical("nrf24 is not responding");
+        nrf_init_result = radio.begin();
+    }
+    catch (const std::runtime_error &error)
+    {
+        Common::logCritical("Failed to initialize nrf24: {}", error);
+        return -1;
+    }
+
+    if (!nrf_init_result)
+    {
+        Common::logCritical("Failed to initialize nrf24");
         return -1;
     }
 
@@ -105,4 +129,6 @@ int main(void)
             demo();
         }
     }
+
+    Common::Services::shutdown();
 }
