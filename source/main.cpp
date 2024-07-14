@@ -127,6 +127,7 @@ int main(void)
         {
             Common::logDebug("sending demo bytes");
             demo();
+            delay(10);
         }
     }
 
